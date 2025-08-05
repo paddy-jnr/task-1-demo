@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EcoTidy Naija</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Favicon -->
+<link rel="icon" type="image/png" href="favicon.png">
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>
+  <style>
+    /* Reset + Layout */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Roboto', sans-serif; color: #333; background: #f5f5f5; }
+    a { text-decoration: none; color: inherit; }
+
+    /* Top Bar */
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .logo {
+      font-weight: bold;
+      color: #2e7d32;
+      font-size: 1.5rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .nav-links a {
+      color: #333;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      color: #2e7d32;
+    }
+
+    .cta-button {
+      background: #2e7d32;
+      color: white;
+      padding: 0.6rem 1rem;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    /* Vertical Side Info */
+    .sidebar-left {
+      position: fixed;
+      left: 0;
+      top: 40%;
+      transform: rotate(-90deg);
+      transform-origin: left center;
+      font-size: 0.9rem;
+      color: #555;
+      z-index: 500;
+    }
+
+    /* Hero Section */
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      min-height: 90vh;
+      background: #fff;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    .hero-text {
+      flex: 1;
+      padding: 2rem;
+    }
+
+    .hero-text h1 {
+      font-size: 2.5rem;
+      color: #2e7d32;
+      margin-bottom: 1rem;
+    }
+
+    .hero-text p {
+      font-size: 1.1rem;
+      color: #444;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-text .cta-button {
+      padding: 0.8rem 1.4rem;
+    }
+
+    .hero-image {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    section {
+      padding: 4rem 2rem;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .section-title {
+      text-align: center;
+      color: #2e7d32;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .about p {
+      text-align: center;
+      max-width: 700px;
+      margin: auto;
+      font-size: 1.1rem;
+    }
+
+    .services-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+
+    .service-box {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      width: 250px;
+      text-align: center;
+    }
+
+    .service-box i {
+      font-size: 2rem;
+      color: #2e7d32;
+      margin-bottom: 1rem;
+    }
+
+    form {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      max-width: 600px;
+      margin: auto;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    form input, form textarea {
+      width: 100%;
+      padding: 0.8rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    form button {
+      background: #2e7d32;
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 5px;
+    }
+
+    footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    footer i {
+      margin: 0 0.5rem;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        padding: 1rem;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .services-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .sidebar-left {
+        display: none;
+      }
+    }
+    .menu-toggle {
+  display: none;
+  font-size: 1.2rem;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  background: #fff;
+  color: #2e7d32;
+  position: relative;
+  z-index: 1001;
+}
+
+.mobile-nav {
+  display: none;
+  flex-direction: column;
+  background: #fff;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.mobile-nav a {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #eee;
+  font-weight: 500;
+  color: #2e7d32;
+}
+
+.mobile-nav.active {
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .topbar .nav-links {
+    display: none;
+  }
+
+  .topbar .cta-button {
+    display: none;
+  }
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar-left">
+    <p>🕒 Sun–Mon, 9am–5pm | English</p>
+  </div>
+
+  <!-- Navigation -->
+  <div class="topbar">
+    <!-- Mobile Nav Toggle Button -->
+<div class="menu-toggle" onclick="toggleMenu()">
+  <i class="fas fa-bars"></i> MENU
+</div>
+
+<!-- Mobile Navigation Dropdown -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#home" onclick="toggleMenu()">Home</a>
+  <a href="#about" onclick="toggleMenu()">About</a>
+  <a href="#services" onclick="toggleMenu()">Services</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+</div>
+    <div class="logo"><i class="fas fa-recycle"></i> EcoTidy</div>
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="#contact" class="cta-button">Get in Touch</a>
+  </div>
+
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="hero-text">
+      <h1>Clean Streets, Greener Future</h1>
+      <p>Don't let your trash pile up. Schedule an eco-friendly pickup today with EcoTidy Naija.</p>
+      <a href="#contact" class="cta-button">Schedule a Pickup</a>
+    </div>
+    <div class="hero-image">
+      <img src="uploads/Screenshot 2025-08-04 172409.png" alt="Waste Collection">
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about" id="about">
+    <h2 class="section-title">About Us</h2>
+    <p>We help Nigerian cities stay clean through eco-friendly waste pickup and recycling.</p>
+  </section>
+
+  <!-- Services -->
+  <section id="services">
+    <h2 class="section-title">Our Services</h2>
+    <div class="services-container">
+      <div class="service-box">
+        <i class="fas fa-trash-alt"></i>
+        <h3>Household Pickup</h3>
+        <p>Scheduled waste collection for homes, stress-free and reliable.</p>
+      </div>
+      <div class="service-box">
+        <i class="fas fa-building"></i>
+        <h3>Business Waste</h3>
+        <p>Eco-conscious waste disposal for offices and stores.</p>
+      </div>
+      <div class="service-box">
+        <i class="fas fa-leaf"></i>
+        <h3>Recycling Education</h3>
+        <p>We educate communities on sustainable waste habits.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2 class="section-title">Contact Us</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="tel" placeholder="Phone Number" required>
+      <textarea rows="3" placeholder="Preferred Pickup Location" required></textarea>
+      <button type="submit">Send Request</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Connect with us</p>
+    <div>
+      <i class="fab fa-whatsapp"></i>
+      <i class="fab fa-facebook"></i>
+      <i class="fab fa-twitter"></i>
+    </div>
+    <p>&copy; 2025 EcoTidy Naija</p>
+  </footer>
+<script>
+  function toggleMenu() {
+    const nav = document.getElementById('mobileNav');
+    nav.classList.toggle('active');
+  }
+</script>
+
+</body>
+</html>
